@@ -8,6 +8,9 @@ package addressbook.model;
 import java.time.LocalDate;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 /**
@@ -29,6 +32,21 @@ public class Person {
     
     public Person(){
         this(null, null);
+    }
+    
+    public Person(String firstName, String lastName){
+        this.firstName = new SimpleStringProperty(firstName);
+        this.lastName = new SimpleStringProperty(lastName);
+        
+       //Dummy data for testing
+        
+        this.street = new SimpleStringProperty("MyStreet");
+        this.city = new SimpleStringProperty("MyCity");
+        this.email = new SimpleStringProperty("MyEmail@mail.com");
+        this.phonel = new SimpleStringProperty("07141281328");
+        this.phonem = new SimpleStringProperty("015122953327");
+        this.postCode = new SimpleIntegerProperty(70199);
+        this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1993, 9, 16));
     }
     
     

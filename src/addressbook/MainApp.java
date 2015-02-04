@@ -5,9 +5,13 @@
  */
 package addressbook;
 
+import addressbook.model.Person;
+import addressbook.view.PersonOverviewController;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -23,9 +27,30 @@ import javafx.stage.Stage;
  */
 public class MainApp extends Application {
     
+    private ObservableList<Person>personData = FXCollections.observableArrayList();
+     
+    public MainApp(){
+        
+        //some sample data
+        
+        personData.add(new Person("Hans", "Muster"));
+        personData.add(new Person("Karl", "Fischer"));
+        personData.add(new Person("Valentin", "Kauth"));
+        personData.add(new Person("Jana", "Müller"));
+        personData.add(new Person("Vanessa", "Beck"));
+        
+        
+    }
+    
+    public ObservableList<Person>getPersonData(){
+        return personData;
+    }
+    
+    
     private Stage primaryStage;
     private BorderPane rootLayout;
-    private String Hello;
+   
+    
     
     @Override
     public void start(Stage primaryStage){
@@ -65,6 +90,10 @@ public class MainApp extends Application {
             AnchorPane personOverview = (AnchorPane)loader.load();
             
             rootLayout.setCenter(personOverview);
+            
+            PersonOverviewController controller = loader.getController();
+            controller.setMainApp(this);
+            
         }catch(IOException e){
             e.printStackTrace();
         }

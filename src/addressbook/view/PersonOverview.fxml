@@ -6,16 +6,16 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="340.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" prefHeight="340.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="addressbook.view.PersonOverviewController">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" layoutX="116.0" layoutY="70.0" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <TableView layoutX="-13.0" layoutY="26.0" prefHeight="298.0" prefWidth="174.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="personTable" layoutX="-13.0" layoutY="26.0" prefHeight="298.0" prefWidth="174.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn prefWidth="86.0" text="Vorname" />
-                      <TableColumn prefWidth="87.0" text="Nachname" />
+                      <TableColumn fx:id="firstNameColumn" prefWidth="86.0" text="Vorname" />
+                      <TableColumn fx:id="lastNameColumn" prefWidth="87.0" text="Nachname" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -44,23 +44,23 @@
                     </rowConstraints>
                      <children>
                         <Label text="Vorname" />
-                        <Label text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="firstNameLabel" text="Label" GridPane.columnIndex="1" />
                         <Label text="Nachname" GridPane.rowIndex="1" />
                         <Label text="Straße" GridPane.rowIndex="3" />
                         <Label text="Geburtstag" GridPane.rowIndex="2" />
                         <Label text="Stadt" GridPane.rowIndex="4" />
                         <Label text="PLZ" GridPane.rowIndex="5" />
                         <Label text="e-Mail" GridPane.rowIndex="6" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label fx:id="lastNameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="birthdayLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="sreetLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="cityLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="postCodeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label fx:id="emailLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <Label text="Telefon Privat" GridPane.rowIndex="7" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Label fx:id="phonelLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <Label text="Telefon Mobil" GridPane.rowIndex="8" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <Label fx:id="phonemLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                      </children>
                   </GridPane>
                   <HBox layoutX="182.0" layoutY="298.0" spacing="10.0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="8.0">

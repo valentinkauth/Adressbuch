@@ -79,7 +79,7 @@ public class PersonOverviewController {
         
         personTable.setItems(mainApp.getPersonData());
         
-   s }
+    }
      
      
     
