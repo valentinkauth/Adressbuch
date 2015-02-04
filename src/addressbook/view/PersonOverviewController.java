@@ -34,7 +34,7 @@ public class PersonOverviewController {
     private Label lastNameLabel;
      
     @FXML
-    private Label sreetLabel;
+    private Label streetLabel;
       
     @FXML
     private Label cityLabel;
@@ -51,8 +51,6 @@ public class PersonOverviewController {
     @FXML
     private Label postCodeLabel;
     
-    @FXML
-    private Label birthdayLabel;
     
    
     //Reference to the main Application
@@ -70,6 +68,11 @@ public class PersonOverviewController {
      private void initialize(){
         firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
+        
+        showPersonDetails(null);
+        
+        
+        
     }
      
      
@@ -79,7 +82,42 @@ public class PersonOverviewController {
         
         personTable.setItems(mainApp.getPersonData());
         
+        //Listen for changes in the selection
+        
+        personTable.getSelectionModel().selectedItemProperty().addListener(
+        (observable, oldValue, newValue)->showPersonDetails(newValue));
+        
     }
+    
+    
+    private void showPersonDetails(Person person){
+        if(person!=null){
+            firstNameLabel.setText(person.getFirstName());
+            lastNameLabel.setText(person.getLastName());
+            streetLabel.setText(person.getStreet());
+            cityLabel.setText(person.getCity());
+            emailLabel.setText(person.getEmail());
+            phonelLabel.setText(person.getPhoneLocal());
+            phonemLabel.setText(person.getPhoneMobile());
+            postCodeLabel.setText(Integer.toString(person.getPostCode()));
+            
+            
+        }else{
+            firstNameLabel.setText("");
+            lastNameLabel.setText("");
+            streetLabel.setText("");
+            cityLabel.setText("");
+            emailLabel.setText("");
+            phonelLabel.setText("");
+            phonemLabel.setText("");
+            postCodeLabel.setText("");
+         
+            
+        }
+    }
+    
+    
+   
      
      
     

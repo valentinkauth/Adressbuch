@@ -5,11 +5,9 @@
  */
 package addressbook.model;
 
-import java.time.LocalDate;
+
 import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -27,7 +25,7 @@ public class Person {
     private final StringProperty phonel;
     private final StringProperty phonem;
     private final IntegerProperty postCode;
-    private final ObjectProperty<LocalDate>birthday;
+    
     
     
     public Person(){
@@ -46,7 +44,7 @@ public class Person {
         this.phonel = new SimpleStringProperty("07141281328");
         this.phonem = new SimpleStringProperty("015122953327");
         this.postCode = new SimpleIntegerProperty(70199);
-        this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1993, 9, 16));
+        
     }
     
     
@@ -149,16 +147,6 @@ public class Person {
     }
     
     
-    public LocalDate getBirthday() {
-        return birthday.get();
-    }
-
-    public void setBirthday(LocalDate birthday) {
-        this.birthday.set(birthday);
-    }
-
-    public ObjectProperty<LocalDate> birthdayProperty() {
-        return birthday;
-    }
+   
     
 }
