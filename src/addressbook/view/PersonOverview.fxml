@@ -64,9 +64,10 @@
                      <children>
                         <Button layoutX="182.0" layoutY="298.0" mnemonicParsing="false" text="Neu..." />
                         <Button layoutX="247.0" layoutY="298.0" mnemonicParsing="false" text="Bearbeiten" />
-                        <Button layoutX="342.0" layoutY="298.0" mnemonicParsing="false" text="Löschen" />
+                        <Button layoutX="342.0" layoutY="298.0" mnemonicParsing="false" onAction="#handleDeletePerson" text="Löschen" />
                      </children>
                   </HBox>
+                  <Label fx:id="errorLabel" layoutX="64.0" layoutY="269.0" text="Label" textFill="#dd0f0f" />
                </children>
             </AnchorPane>
         </items>

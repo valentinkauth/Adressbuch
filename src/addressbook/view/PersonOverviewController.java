@@ -8,9 +8,17 @@ package addressbook.view;
 import addressbook.MainApp;
 import addressbook.model.Person;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.VBoxBuilder;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 /**
  *
@@ -51,6 +59,9 @@ public class PersonOverviewController {
     @FXML
     private Label postCodeLabel;
     
+    @FXML
+    private Label errorLabel;
+    
     
    
     //Reference to the main Application
@@ -69,9 +80,13 @@ public class PersonOverviewController {
         firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
         lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
         
+        errorLabel.setText("");
+        
         showPersonDetails(null);
         
-        
+        //Listen for changes in the selection
+         personTable.getSelectionModel().selectedItemProperty().addListener(
+        (observable, oldValue, newValue)->showPersonDetails(newValue));
         
     }
      
@@ -82,10 +97,9 @@ public class PersonOverviewController {
         
         personTable.setItems(mainApp.getPersonData());
         
-        //Listen for changes in the selection
         
-        personTable.getSelectionModel().selectedItemProperty().addListener(
-        (observable, oldValue, newValue)->showPersonDetails(newValue));
+        
+       
         
     }
     
@@ -117,7 +131,24 @@ public class PersonOverviewController {
     }
     
     
-   
+   @FXML
+   private void handleDeletePerson(){
+       int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+       
+       if (selectedIndex>=0){
+       personTable.getItems().remove(selectedIndex);
+       }
+       
+       else{
+          errorLabel.setText("Bitte wählen Sie einen Kontakt zum Löschen aus");
+          
+          //TODO: Thread, der den Text nach 5 Sekunden wieder verschwinden lässt
+           
+       }
+       
+      
+       
+   }
      
      
     
