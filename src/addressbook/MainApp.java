@@ -6,6 +6,7 @@
 package addressbook;
 
 import addressbook.model.Person;
+import addressbook.view.PersonEditDialogController;
 import addressbook.view.PersonOverviewController;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
@@ -99,7 +101,36 @@ public class MainApp extends Application {
         }
     }
     
-    public Stage gerPrimaryStage(){
+    
+    public boolean showPersonEditDialog(Person person){
+        try{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(MainApp.class.getResource("view/PersonEditDialog.fxml"));
+        AnchorPane page = (AnchorPane) loader.load();
+        
+        Stage dialogStage= new Stage();
+        dialogStage.setTitle("Person bearbeiten");
+        dialogStage.initModality(Modality.WINDOW_MODAL);
+        dialogStage.initOwner(primaryStage);
+        Scene scene = new Scene(page);
+        dialogStage.setScene(scene);
+        
+        PersonEditDialogController controller = loader.getController();
+        controller.setDialogStage(dialogStage);
+        controller.setPerson(person);
+        
+        dialogStage.showAndWait();
+        
+        return controller.isOkClicked();
+        }catch(IOException e){
+            e.printStackTrace();
+            return false;
+        }
+        
+        
+    }
+    
+    public Stage getPrimaryStage(){
         return primaryStage;
     }
     

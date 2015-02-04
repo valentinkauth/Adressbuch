@@ -6,8 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="467.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="467.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="addressbook.view.PersonEditDialogController">
    <children>
       <GridPane layoutX="34.0" layoutY="27.0" prefHeight="270.0" prefWidth="408.0" AnchorPane.bottomAnchor="170.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
         <columnConstraints>
@@ -33,20 +32,20 @@
             <Label text="e-Mail" GridPane.rowIndex="5" />
             <Label text="Telefon Privat" GridPane.rowIndex="6" />
             <Label text="Telefon Mobil" GridPane.rowIndex="7" />
-            <TextField GridPane.columnIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="firstNameField" GridPane.columnIndex="1" />
+            <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="streetField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="cityField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="postCodeField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="phonelField" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="phonemField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          </children>
       </GridPane>
       <HBox alignment="BOTTOM_RIGHT" layoutX="278.0" layoutY="350.0" spacing="10.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
          <children>
-            <Button layoutX="359.0" layoutY="350.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="OK" />
-            <Button layoutX="359.0" layoutY="350.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="94.0" text="Abbrechen" />
+            <Button layoutX="359.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleOk" prefHeight="26.0" prefWidth="94.0" text="OK" />
+            <Button layoutX="359.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="94.0" text="Abbrechen" />
          </children>
       </HBox>
       <Label layoutX="25.0" layoutY="320.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="320.0" />
