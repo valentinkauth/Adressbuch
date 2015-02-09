@@ -9,32 +9,33 @@ import addressbook.model.Person;
 
 import addressbook.view.PersonEditDialogController;
 import addressbook.view.PersonOverviewController;
-
-import java.io.File;
 import java.io.IOException;
-import java.util.prefs.Preferences;
 import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
+import java.util.logging.Logger;
+import java.util.logging.Level;
+
+
 
 /**
  *
  * @author Valentin
  */
+
+
 public class MainApp extends Application {
+    
+    private final static Logger log = Logger.getLogger(MainApp.class.getName());
+    
+    
+   
     
     private ObservableList<Person>personData = FXCollections.observableArrayList();
      
@@ -44,6 +45,11 @@ public class MainApp extends Application {
         
         Thread initializeThread = new Thread(){@Override public void run(){
            personData.add(new Person("Valentin", "Kauth", "Möhringer Straße 43", "Stuttgart", "valentinkauth@me.com", "07141/281328", "015122953327", 70199));
+           personData.add(new Person("Vanessa", "Beck", "Nelkenweg 11", "Ludwigsburg", "vanessa.beck@gmx.de", "07141/382799", "01712274883", 71642));
+           personData.add(new Person("Tom", "Fischer", "Böblinger Straße 82/5", "Stuttgart", "tomfischer90@web.de", "0711/295482", "01517374867", 70199));
+           personData.add(new Person("Valentin", "Kauth", "Möhringer Straße 43", "Stuttgart", "valentinkauth@me.com", "07141/281328", "015122953327", 70199));
+           personData.add(new Person("Valentin", "Kauth", "Möhringer Straße 43", "Stuttgart", "valentinkauth@me.com", "07141/281328", "015122953327", 70199));
+           log.info("Start-Daten eingefügt");
         }};
         
         initializeThread.start();
@@ -79,6 +85,8 @@ public class MainApp extends Application {
         
         showPersonOverview();
         
+        log.info("Startfenster wurde vollständig geladen und initialisiert");
+        
         
         
     }
@@ -99,9 +107,13 @@ public class MainApp extends Application {
        
 
         primaryStage.show();
+    
     } catch (IOException e) {
         e.printStackTrace();
+        log.log(Level.SEVERE,"RootLayout konnte nicht geladen werden", e);
     }
+    
+    log.info("RootLayout wurde erfolgreich geladen und wird nun angezeigt");
 
    
     
@@ -120,7 +132,9 @@ public class MainApp extends Application {
             
         }catch(IOException e){
             e.printStackTrace();
+            log.log(Level.SEVERE,"PersonOverview konnte nicht geladen werden", e);
         }
+        log.info("PersonOverview wurde erfolgreich geladen und wird nun angezeigt");
     }
     
     
@@ -144,10 +158,13 @@ public class MainApp extends Application {
         dialogStage.showAndWait();
         
         return controller.isOkClicked();
+        
         }catch(IOException e){
             e.printStackTrace();
+            log.log(Level.SEVERE,"PersonEditDialog konnte nicht geladen/gestartet werden", e);
             return false;
         }
+        
         
         
     }

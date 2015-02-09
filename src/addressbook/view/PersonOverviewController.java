@@ -21,12 +21,15 @@ import javafx.scene.layout.VBoxBuilder;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Valentin
  */
 public class PersonOverviewController {
+    
+    public static final Logger logPOC = Logger.getLogger(PersonOverviewController.class.getName());
     
     @FXML
     private TableView<Person> personTable;
@@ -142,6 +145,7 @@ public class PersonOverviewController {
        
        if (selectedIndex>=0){
        personTable.getItems().remove(selectedIndex);
+       logPOC.info("Eintrag wurde gelöscht");
        }
        
        else{
@@ -161,6 +165,8 @@ public class PersonOverviewController {
        boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
        if(okClicked){
            mainApp.getPersonData().add(tempPerson);
+           
+       logPOC.info("Neuer Eintrag erstellt");
        }
    }
    

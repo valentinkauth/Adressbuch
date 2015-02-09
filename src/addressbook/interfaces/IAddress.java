@@ -1,5 +1,5 @@
 
-package addressbook.model;
+package addressbook.interfaces;
 
 
 

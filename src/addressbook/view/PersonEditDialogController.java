@@ -10,12 +10,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Valentin
  */
 public class PersonEditDialogController {
+    
+        public static final Logger logPEDC = Logger.getLogger(PersonEditDialogController.class.getName());
+
     
     @FXML
     private TextField firstNameField;
@@ -68,6 +72,8 @@ public class PersonEditDialogController {
         emailField.setText(person.getEmail());
         phonelField.setText(person.getPhoneLocal());
         phonemField.setText(person.getPhoneMobile());
+        
+        logPEDC.info("DialogFesnter mit Daten befüllt");
     }
     
     public boolean isOkClicked(){
@@ -86,8 +92,12 @@ public class PersonEditDialogController {
             person.setPhoneLocal(phonelField.getText());
             person.setPhoneMobile(phonemField.getText());
             
+           
+            
             okClicked = true;
             dialogStage.close();
+            
+            logPEDC.info("Daten eingefügt und DialogFesnter geschlossen");
             
             
         }
@@ -98,6 +108,7 @@ public class PersonEditDialogController {
     @FXML
     private void handleCancel(){
         dialogStage.close();
+       logPEDC.info("DialogFenster geschlossen");
     }
     
     private boolean isInputValid(){
@@ -146,7 +157,10 @@ public class PersonEditDialogController {
             return true;
         }else{
             errorLabel.setText(errorMessage);
+            logPEDC.info("mindestens ein ungültiger Eintrag gefunden");
             return false;
+            
+            
         }
       
     }
