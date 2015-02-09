@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  *
@@ -73,6 +74,7 @@ public class PersonEditDialogController {
         phonelField.setText(person.getPhoneLocal());
         phonemField.setText(person.getPhoneMobile());
         
+        logPEDC.setLevel(Level.INFO);
         logPEDC.info("DialogFesnter mit Daten befüllt");
     }
     
@@ -97,6 +99,7 @@ public class PersonEditDialogController {
             okClicked = true;
             dialogStage.close();
             
+            logPEDC.setLevel(Level.INFO);
             logPEDC.info("Daten eingefügt und DialogFesnter geschlossen");
             
             
@@ -108,6 +111,8 @@ public class PersonEditDialogController {
     @FXML
     private void handleCancel(){
         dialogStage.close();
+        
+       logPEDC.setLevel(Level.INFO);
        logPEDC.info("DialogFenster geschlossen");
     }
     
@@ -157,7 +162,10 @@ public class PersonEditDialogController {
             return true;
         }else{
             errorLabel.setText(errorMessage);
+            
+            logPEDC.setLevel(Level.WARNING);
             logPEDC.info("mindestens ein ungültiger Eintrag gefunden");
+            
             return false;
             
             

@@ -7,21 +7,12 @@ package addressbook.view;
 
 import addressbook.MainApp;
 import addressbook.model.Person;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.layout.VBoxBuilder;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import java.util.logging.Logger;
+import java.util.logging.Level;
 
 /**
  *
@@ -145,7 +136,10 @@ public class PersonOverviewController {
        
        if (selectedIndex>=0){
        personTable.getItems().remove(selectedIndex);
+       
+       logPOC.setLevel(Level.INFO);
        logPOC.info("Eintrag wurde gelöscht");
+       
        }
        
        else{
@@ -166,6 +160,8 @@ public class PersonOverviewController {
        if(okClicked){
            mainApp.getPersonData().add(tempPerson);
            
+           
+       logPOC.setLevel(Level.INFO);    
        logPOC.info("Neuer Eintrag erstellt");
        }
    }

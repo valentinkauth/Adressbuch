@@ -32,7 +32,7 @@ import java.util.logging.Level;
 
 public class MainApp extends Application {
     
-    private final static Logger log = Logger.getLogger(MainApp.class.getName());
+    private final static Logger logMainApp = Logger.getLogger(MainApp.class.getName());
     
     
    
@@ -49,7 +49,8 @@ public class MainApp extends Application {
            personData.add(new Person("Tom", "Fischer", "Böblinger Straße 82/5", "Stuttgart", "tomfischer90@web.de", "0711/295482", "01517374867", 70199));
            personData.add(new Person("Valentin", "Kauth", "Möhringer Straße 43", "Stuttgart", "valentinkauth@me.com", "07141/281328", "015122953327", 70199));
            personData.add(new Person("Valentin", "Kauth", "Möhringer Straße 43", "Stuttgart", "valentinkauth@me.com", "07141/281328", "015122953327", 70199));
-           log.info("Start-Daten eingefügt");
+           logMainApp.setLevel(Level.INFO);
+           logMainApp.info("Start-Daten eingefügt");
         }};
         
         initializeThread.start();
@@ -85,7 +86,8 @@ public class MainApp extends Application {
         
         showPersonOverview();
         
-        log.info("Startfenster wurde vollständig geladen und initialisiert");
+        logMainApp.setLevel(Level.INFO);
+        logMainApp.info("Startfenster wurde vollständig geladen und initialisiert");
         
         
         
@@ -110,10 +112,11 @@ public class MainApp extends Application {
     
     } catch (IOException e) {
         e.printStackTrace();
-        log.log(Level.SEVERE,"RootLayout konnte nicht geladen werden", e);
+        logMainApp.log(Level.SEVERE,"RootLayout konnte nicht geladen werden", e);
     }
     
-    log.info("RootLayout wurde erfolgreich geladen und wird nun angezeigt");
+    logMainApp.setLevel(Level.INFO);
+    logMainApp.info("RootLayout wurde erfolgreich geladen und wird nun angezeigt");
 
    
     
@@ -132,9 +135,11 @@ public class MainApp extends Application {
             
         }catch(IOException e){
             e.printStackTrace();
-            log.log(Level.SEVERE,"PersonOverview konnte nicht geladen werden", e);
+            logMainApp.log(Level.SEVERE,"PersonOverview konnte nicht geladen werden", e);
         }
-        log.info("PersonOverview wurde erfolgreich geladen und wird nun angezeigt");
+        
+        logMainApp.setLevel(Level.INFO);
+        logMainApp.info("PersonOverview wurde erfolgreich geladen und wird nun angezeigt");
     }
     
     
@@ -161,7 +166,7 @@ public class MainApp extends Application {
         
         }catch(IOException e){
             e.printStackTrace();
-            log.log(Level.SEVERE,"PersonEditDialog konnte nicht geladen/gestartet werden", e);
+            logMainApp.log(Level.SEVERE,"PersonEditDialog konnte nicht geladen/gestartet werden", e);
             return false;
         }
         
