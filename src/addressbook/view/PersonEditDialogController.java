@@ -60,7 +60,11 @@ public class PersonEditDialogController {
         lastNameField.setText(person.getLastName());
         streetField.setText(person.getStreet());
         cityField.setText(person.getCity());
-        postCodeField.setText(Integer.toString(person.getPostCode()));
+        //0 from the default constructor should not be displayed
+        if(person.getPostCode()!=0){
+        
+            postCodeField.setText(Integer.toString(person.getPostCode()));
+        }
         emailField.setText(person.getEmail());
         phonelField.setText(person.getPhoneLocal());
         phonemField.setText(person.getPhoneMobile());

@@ -7,6 +7,8 @@ package addressbook.view;
 
 import addressbook.MainApp;
 import addressbook.model.Person;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -105,6 +107,7 @@ public class PersonOverviewController {
     
     
     private void showPersonDetails(Person person){
+        errorLabel.setText("");
         if(person!=null){
             firstNameLabel.setText(person.getFirstName());
             lastNameLabel.setText(person.getLastName());
@@ -133,6 +136,8 @@ public class PersonOverviewController {
     
    @FXML
    private void handleDeletePerson(){
+       
+       errorLabel.setText("");
        int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
        
        if (selectedIndex>=0){
@@ -140,10 +145,9 @@ public class PersonOverviewController {
        }
        
        else{
-          errorLabel.setText("Bitte wählen Sie einen Kontakt zum Löschen aus");
-          
-          //TODO: Thread, der den Text nach 5 Sekunden wieder verschwinden lässt
            
+        errorLabel.setText("Bitte wählen Sie einen Kontakt zum Löschen aus");
+     
        }
        
       
@@ -152,6 +156,7 @@ public class PersonOverviewController {
    
    @FXML
    private void handleNewPerson(){
+       errorLabel.setText("");
        Person tempPerson = new Person();
        boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
        if(okClicked){
@@ -161,6 +166,7 @@ public class PersonOverviewController {
    
    @FXML
    private void handleEditPerson(){
+       errorLabel.setText("");
        Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
        if(selectedPerson!=null){
            boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
@@ -168,7 +174,7 @@ public class PersonOverviewController {
                showPersonDetails(selectedPerson);
            }
        }else{
-           errorLabel.setText("Bitte Person auswählen");
+           errorLabel.setText("Bitte wählen sie einen Kontakt zum Bearbeiten aus");
        }
    }
      

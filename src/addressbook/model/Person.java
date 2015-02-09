@@ -15,87 +15,39 @@ import javafx.beans.property.StringProperty;
  *
  * @author Valentin
  */
-public class Person {
+public class Person extends PersonSuper {
     
-    private final StringProperty firstName;
-    private final StringProperty lastName;
-    private final StringProperty street;
-    private final StringProperty city;
+    
+    //adding variables for extra data (mail, phone local, mobile phone)
     private final StringProperty email;
     private final StringProperty phonel;
     private final StringProperty phonem;
-    private final IntegerProperty postCode;
     
     
     
     public Person(){
-        this(null, null);
+                   this(null, null, null, null, null, null, null, 0);
+
+
     }
     
-    public Person(String firstName, String lastName){
-        this.firstName = new SimpleStringProperty(firstName);
-        this.lastName = new SimpleStringProperty(lastName);
+    //Contructor to add dummy data
+    
+    public Person(String firstName, String lastName, String street, String city, 
+            String email, String phonel, String phonem, int postCode){
         
-       //Dummy data for testing
         
-        this.street = new SimpleStringProperty("MyStreet");
-        this.city = new SimpleStringProperty("MyCity");
-        this.email = new SimpleStringProperty("MyEmail@mail.com");
-        this.phonel = new SimpleStringProperty("07141281328");
-        this.phonem = new SimpleStringProperty("015122953327");
-        this.postCode = new SimpleIntegerProperty(70199);
+        //calling the Contructor of the Super class
+        super(firstName, lastName, street, city, postCode);
         
-    }
+        this.email = new SimpleStringProperty(email);
+        this.phonel = new SimpleStringProperty(phonel);
+        this.phonem = new SimpleStringProperty(phonem);
+        
+       }
     
     
     
-    public String getFirstName() {
-        return firstName.get();
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName.set(firstName);
-    }
-
-    public StringProperty firstNameProperty() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName.get();
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName.set(lastName);
-    }
-
-    public StringProperty lastNameProperty() {
-        return lastName;
-    }
-
-    public String getStreet() {
-        return street.get();
-    }
-
-    public void setStreet(String street) {
-        this.street.set(street);
-    }
-
-    public StringProperty streetProperty() {
-        return street;
-    }
-    
-      public String getCity() {
-        return city.get();
-    }
-
-    public void setCity(String city) {
-        this.city.set(city);
-    }
-
-    public StringProperty cityProperty() {
-        return city;
-    }
     
     
     public String getEmail() {
@@ -134,17 +86,6 @@ public class Person {
         return phonem;
     }
 
-    public int getPostCode() {
-        return postCode.get();
-    }
-
-    public void setPostCode(int postCode) {
-        this.postCode.set(postCode);
-    }
-
-    public IntegerProperty postCodeProperty() {
-        return postCode;
-    }
     
     
    

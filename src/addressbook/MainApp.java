@@ -6,9 +6,13 @@
 package addressbook;
 
 import addressbook.model.Person;
+
 import addressbook.view.PersonEditDialogController;
 import addressbook.view.PersonOverviewController;
+
+import java.io.File;
 import java.io.IOException;
+import java.util.prefs.Preferences;
 import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -22,6 +26,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
 /**
  *
@@ -35,14 +42,23 @@ public class MainApp extends Application {
         
         //some sample data
         
-        personData.add(new Person("Hans", "Muster"));
-        personData.add(new Person("Karl", "Fischer"));
-        personData.add(new Person("Valentin", "Kauth"));
-        personData.add(new Person("Jana", "Müller"));
-        personData.add(new Person("Vanessa", "Beck"));
+        Thread initializeThread = new Thread(){@Override public void run(){
+           personData.add(new Person("Valentin", "Kauth", "Möhringer Straße 43", "Stuttgart", "valentinkauth@me.com", "07141/281328", "015122953327", 70199));
+        }};
         
+        initializeThread.start();
         
     }
+    
+    
+    
+    
+      
+   
+        
+        
+        
+    
     
     public ObservableList<Person>getPersonData(){
         return personData;
@@ -68,22 +84,28 @@ public class MainApp extends Application {
     }
     
     
-    public void initRootLayout(){
-        try{
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(MainApp.class.getResource("view/RootLayout.fxml"));
-            rootLayout = (BorderPane)loader.load();
-            
-            Scene scene = new Scene(rootLayout);
-            
-            primaryStage.setScene(scene);
-            primaryStage.show();
-            
-        }catch(IOException e){
-            e.printStackTrace();
-        }
-        
-     }
+    public void initRootLayout() {
+    try {
+        // Load root layout from fxml file.
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(MainApp.class
+                .getResource("view/RootLayout.fxml"));
+        rootLayout = (BorderPane) loader.load();
+
+        // Show the scene containing the root layout.
+        Scene scene = new Scene(rootLayout);
+        primaryStage.setScene(scene);
+
+       
+
+        primaryStage.show();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+   
+    
+}
     
     public void showPersonOverview(){
         try{
@@ -137,5 +159,8 @@ public class MainApp extends Application {
    public static void main(String[]args){
        launch(args);
    }
+   
+   
+   
     
 }

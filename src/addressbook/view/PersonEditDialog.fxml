@@ -48,6 +48,6 @@
             <Button layoutX="359.0" layoutY="350.0" mnemonicParsing="false" onAction="#handleCancel" prefHeight="26.0" prefWidth="94.0" text="Abbrechen" />
          </children>
       </HBox>
-      <Label layoutX="25.0" layoutY="320.0" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="320.0" />
+      <Label fx:id="errorLabel" layoutX="25.0" layoutY="320.0" textFill="#d70f0f" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="320.0" />
    </children>
 </AnchorPane>
